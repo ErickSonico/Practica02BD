@@ -1,11 +1,35 @@
 import os.path
 from Veterinarios import *
+from Animales import *
+from Biomas import *
 
 dir = os.path.dirname(__file__)
-file = dir + '/Veterinarios.csv'
-veterinarios = Veterinarios(file)
+file_vet = dir + '/Veterinarios.csv'
+veterinarios = Veterinarios(file_vet)
 
-print(veterinarios.docVeterinario["nombre"])
+file_animales = dir+ '/Animales.csv'
+animales = Animales(file_animales)
 
-veterinarios.docVeterinario.loc[veterinarios.docVeterinario['rfc'] == 'GAVE23', 'nombre'] = 'Goku'
-veterinarios.docVeterinario.to_csv(file, index=False)
+file_biomas = dir + '/Biomas.csv'
+biomas = Biomas(file_biomas)
+
+print('\n')
+print(veterinarios.doc_veterinario)
+veterinarios.actualiza_dato('GAVE23','nombre','Goku')
+#veterinarios.guarda_datos();
+print('\n')
+print(veterinarios.doc_veterinario)
+
+print('\n')
+print(animales.doc_animales)
+animales.actualiza_dato(4567,'edad',7)
+#animales.guarda_datos()
+print('\n')
+print(animales.doc_animales)
+
+print('\n')
+print(biomas.doc_biomas)
+biomas.actualiza_dato(22,'temperatura',1)
+#biomas.guarda_datos()
+print('\n')
+print(biomas.doc_biomas)
