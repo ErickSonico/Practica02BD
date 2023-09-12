@@ -1,11 +1,11 @@
 import os.path
-from ReadCSV import *
+from Veterinarios import *
 
 dir = os.path.dirname(__file__)
 file = dir + '/Veterinarios.csv'
-lector = ReadCSV()
-lector.leerCSV(file)
+veterinarios = Veterinarios(file)
 
-print(lector.diccVeterinario["rfc","nombre","direccion"])
+print(veterinarios.docVeterinario["nombre"])
 
-
+veterinarios.docVeterinario.loc[veterinarios.docVeterinario['rfc'] == 'GAVE23', 'nombre'] = 'Goku'
+veterinarios.docVeterinario.to_csv(file, index=False)

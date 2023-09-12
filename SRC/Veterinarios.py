@@ -1,15 +1,15 @@
 import csv
 import os.path
+from typing import Any
 import pandas as pd
 
-class ReadCSV:
+class Veterinarios:   
 
-    diccVeterinario = {}
-    diccAnimal      = {}
-    diccBioma       = {}
-    
+    def __init__(self, file):
+        self.docVeterinario = pd.DataFrame(pd.read_csv(file))
+
     def leerCSV(self, file):
-        self.diccVeterinario = pd.read_csv(file)
+        self.diccVeterinario = pd.DataFrame(pd.read_csv(file))
         
     '''
     with open(current_directory + '/Veterinarios.csv','r') as csv_file:
