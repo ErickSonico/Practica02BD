@@ -14,3 +14,9 @@ class Biomas:
 
     def agrega_bioma(self,renglon):
         self.doc_biomas.loc[len(self.doc_biomas)] = renglon
+
+    def elimina_bioma(self,llave):
+        self.doc_biomas = self.doc_biomas.drop(self.doc_biomas[self.doc_biomas['idBioma'] == llave].index)
+
+    def get_bioma(self,llave):
+        return self.doc_biomas.loc[self.doc_biomas['idBioma'] == llave]

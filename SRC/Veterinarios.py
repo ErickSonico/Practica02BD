@@ -14,3 +14,10 @@ class Veterinarios:
 
     def agrega_veterinario(self,renglon):
         self.doc_veterinario.loc[len(self.doc_veterinario)] = renglon
+
+    def elimina_veterinario(self,llave):
+        self.doc_veterinario = self.doc_veterinario.drop(self.doc_veterinario[self.doc_veterinario['rfc'] == llave].index)
+
+    def get_veterinario(self,llave):
+        return self.doc_veterinario.loc[self.doc_veterinario['rfc'] == llave]
+        
