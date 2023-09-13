@@ -14,3 +14,9 @@ class Animales:
 
     def agrega_animal(self,renglon):
         self.doc_animales.loc[len(self.doc_animales)] = renglon
+
+    def elimina_animal(self,llave):
+        self.doc_animales = self.doc_animales.drop(self.doc_animales[self.doc_animales['idAnimal'] == llave].index)
+
+    def get_animal(self,llave):
+        return self.doc_animales.loc[self.doc_animales['idAnimal'] == llave]
