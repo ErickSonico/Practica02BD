@@ -33,3 +33,8 @@ biomas.actualiza_dato(22,'temperatura',1)
 #biomas.guarda_datos()
 print('\n')
 print(biomas.doc_biomas)
+
+#Ejemplo para agregar un nuevo bioma.
+nuevo_bioma = {'idBioma':10,'clima':'arenoso','temperatura':60}
+biomas.agrega_bioma(nuevo_bioma)
+print(biomas.doc_biomas)

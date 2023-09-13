@@ -11,3 +11,6 @@ class Animales:
     
     def actualiza_dato(self,llave,columna,valor_nuevo):
         self.doc_animales.loc[self.doc_animales['idAnimal'] == llave, columna] = valor_nuevo
+
+    def agrega_animal(self,renglon):
+        self.doc_animales.loc[len(self.doc_animales)] = renglon

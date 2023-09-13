@@ -11,3 +11,6 @@ class Biomas:
     
     def actualiza_dato(self,llave,columna,valor_nuevo):
         self.doc_biomas.loc[self.doc_biomas['idBioma'] == llave, columna] = valor_nuevo
+
+    def agrega_bioma(self,renglon):
+        self.doc_biomas.loc[len(self.doc_biomas)] = renglon

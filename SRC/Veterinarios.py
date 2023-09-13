@@ -11,4 +11,6 @@ class Veterinarios:
     
     def actualiza_dato(self,llave,columna,valor_nuevo):
         self.doc_veterinario.loc[self.doc_veterinario['rfc'] == llave, columna] = valor_nuevo
-        
+
+    def agrega_veterinario(self,renglon):
+        self.doc_veterinario.loc[len(self.doc_veterinario)] = renglon
