@@ -19,4 +19,4 @@ class Animales:
         self.doc_animales = self.doc_animales.drop(self.doc_animales[self.doc_animales['idAnimal'] == llave].index)
 
     def get_animal(self,llave):
-        return self.doc_animales.loc[self.doc_animales['idAnimal'] == llave]
+        return self.doc_animales.loc[self.doc_animales['idAnimal'] == llave].to_dict('records')[0]

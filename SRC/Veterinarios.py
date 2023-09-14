@@ -19,5 +19,4 @@ class Veterinarios:
         self.doc_veterinario = self.doc_veterinario.drop(self.doc_veterinario[self.doc_veterinario['rfc'] == llave].index)
 
     def get_veterinario(self,llave):
-        return self.doc_veterinario.loc[self.doc_veterinario['rfc'] == llave]
-        
+        return self.doc_veterinario.loc[self.doc_veterinario['rfc'] == llave].to_dict('records')[0]
