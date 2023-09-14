@@ -147,7 +147,7 @@ class Menu:
         elif n == 2: # Consultar
             if self.entidad == self.veterinarios:
                 rfc = input("RFC: ")
-                if rfc != str:
+                if type(rfc) != str:
                     raise ValueError("El valor no es el esperado")
                 print('\n' + str(self.entidad.get_veterinario(rfc)) + '\n')
                 self.entidad = None
