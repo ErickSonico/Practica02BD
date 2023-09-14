@@ -25,7 +25,7 @@ while True:
     print('3. Biomas')
     print('4. Salir')
     try:
-        entidad = int(input(''))
+        entidad = int(input())
         if entidad == 4:
             break
     except ValueError:

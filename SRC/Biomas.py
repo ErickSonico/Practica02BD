@@ -19,4 +19,4 @@ class Biomas:
         self.doc_biomas = self.doc_biomas.drop(self.doc_biomas[self.doc_biomas['idBioma'] == llave].index)
 
     def get_bioma(self,llave):
-        return self.doc_biomas.loc[self.doc_biomas['idBioma'] == llave]
+        return self.doc_biomas.loc[self.doc_biomas['idBioma'] == llave].to_dict('records')[0]

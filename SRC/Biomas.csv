@@ -1,5 +1,3 @@
-idBioma,clima,temperatura
-53,templado,17
-22,polar,2
-35,desierto,40
-41,cálido,25
+idBioma,tipo,clima,temperatura,numero de jaulas,numero de animales,numero de cuidadores,numero de veterinarios
+1243,Polar,Frío,-40.0,4,5,5,2
+7839,Sabana,Seco,45.0,15,12,13,15
