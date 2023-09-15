@@ -56,4 +56,12 @@ class Biomas:
         return self.doc_biomas.loc[self.doc_biomas['idBioma'] == llave].to_dict('records')[0]
     
     def busca_bioma(self,llave):
+        """Método que verifica si un bioma está en el archivo a partir de su llave
+
+        Args:
+            llave (int): id a buscar
+
+        Returns:
+            boolean: True si el bioma está dentro del archivo. False e.o.c.
+        """
         return llave in self.doc_biomas.values

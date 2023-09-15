@@ -51,4 +51,12 @@ class Veterinarios:
         return self.doc_veterinario.loc[self.doc_veterinario['rfc'] == llave].to_dict('records')[0]
     
     def busca_veterinario(self,llave):
+        """Método que verifica si un veterinario está en el archivo a partir de su llave
+
+        Args:
+            llave (int): rfc a buscar
+
+        Returns:
+            boolean: True si el veterinario está dentro del archivo. False e.o.c.
+        """
         return llave in self.doc_veterinario.values

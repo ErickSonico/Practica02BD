@@ -56,4 +56,12 @@ class Animales:
         return self.doc_animales.loc[self.doc_animales['idAnimal'] == llave].to_dict('records')[0]
     
     def busca_animal(self,llave):
+        """Método que verifica si un animal está en el archivo a partir de su llave
+
+        Args:
+            llave (int): id a buscar
+
+        Returns:
+            boolean: True si el animal está dentro del archivo. False e.o.c.
+        """
         return llave in self.doc_animales.values
