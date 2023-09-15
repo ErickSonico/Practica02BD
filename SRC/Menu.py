@@ -142,6 +142,7 @@ class Menu:
                                                  'numero exterior': numeroExt, 'numero interior': numeroInt, 'colonia': colonia, 'estado': estado, 
                                                  'especialidad': especialidad, 'salario': salario, 'fecha de inicio': fechaIni, 'fecha de fin': fechaFin})
                 self.entidad.guarda_datos()
+                print("Veterinario guardado exitosamente")
                 self.entidad = None
                 self.operacion = None
                 
@@ -180,6 +181,7 @@ class Menu:
                 self.entidad.agrega_animal({'idAnimal': idAnimal, 'nombre': nombreAnimal, 'especie': especie, 'altura': altura, 'peso': peso, 'sexo': sexo,
                                             'alimentacion': alimentacion, 'instruccion medica': instruccionMed, 'numero de jaula': numeroJaula})
                 self.entidad.guarda_datos()
+                print("Animal guardado exitosamente")
                 self.entidad = None
                 self.operacion = None
                 
@@ -217,6 +219,7 @@ class Menu:
                 self.entidad.agrega_bioma({'idBioma': idBioma, 'tipo': tipo, 'clima': clima, 'temperatura': temperatura, 'numero de jaulas': cantidadJaulas,
                                            'numero de animales': numeroAnimales, 'numero de cuidadores': numeroCuidadores, 'numero de veterinarios': numeroVeterinaios})
                 self.entidad.guarda_datos()
+                print("Bioma guardado exitosamente")
                 self.entidad = None
                 self.operacion = None
             
@@ -225,7 +228,11 @@ class Menu:
                 rfc = input("RFC: ")
                 if type(rfc) != str:
                     raise ValueError("El valor no es el esperado")
-                print('\n' + str(self.entidad.get_veterinario(rfc)) + '\n')
+                try:
+                    print('\n' + str(self.entidad.get_veterinario(rfc)) + '\n')
+                except Exception:
+                    print("Veterinario no encontrado")
+                    raise ValueError()
                 self.entidad = None
                 self.operacion = None
             elif self.entidad == self.animales:
@@ -233,7 +240,11 @@ class Menu:
                     id = int(input("ID: "))
                 except Exception:
                     raise ValueError("El valor tiene que ser numerico")
-                print('\n' + str(self.entidad.get_animal(id)) + '\n')
+                try:
+                    print('\n' + str(self.entidad.get_animal(id)) + '\n')
+                except Exception:
+                    print("Animal no encontrado")
+                    raise ValueError()
                 self.entidad = None
                 self.operacion = None
             elif self.entidad == self.biomas:
@@ -241,7 +252,11 @@ class Menu:
                     id = int(input("ID: "))
                 except Exception:
                     raise ValueError("El valor tiene que ser numerico")
-                print('\n' + str(self.entidad.get_bioma(id)) + '\n')
+                try:
+                    print('\n' + str(self.entidad.get_bioma(id)) + '\n')
+                except Exception:
+                    print("Bioma no encontrado")
+                    raise ValueError()
                 self.entidad = None
                 self.operacion = None
 
@@ -273,19 +288,25 @@ class Menu:
                 rfc = input("RFC: ")
                 if type(rfc) != str:
                     raise ValueError("El valor no es esperado")
-                self.entidad.elimina_veterinario(rfc)
-                self.entidad.guarda_datos()
-                self.entidad = None
-                self.operacion = None
+                if self.entidad.busca_veterinario(rfc):
+                    self.entidad.elimina_veterinario(rfc)
+                    self.entidad.guarda_datos()
+                    self.entidad = None
+                    self.operacion = None
+                else:
+                    print("Veterinario no encontrado para eliminar")
             elif self.entidad == self.animales:
                 try:
                     id = int(input("ID: "))
                 except Exception:
                     raise ValueError("El valor tiene que ser numerico")
-                self.entidad.elimina_animal(id)
-                self.entidad.guarda_datos()
-                self.entidad = None
-                self.operacion = None
+                if self.entidad.busca_animal(id):
+                    self.entidad.elimina_animal(id)
+                    self.entidad.guarda_datos()
+                    self.entidad = None
+                    self.operacion = None
+                else:
+                    print("Animal no encontrado para eliminar")
             elif self.entidad == self.biomas:
                 try:
                     id = int(input("ID: "))

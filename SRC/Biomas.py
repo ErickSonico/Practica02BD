@@ -54,3 +54,6 @@ class Biomas:
             dicc{}: reglon que devuelve
         """
         return self.doc_biomas.loc[self.doc_biomas['idBioma'] == llave].to_dict('records')[0]
+    
+    def busca_bioma(self,llave):
+        return llave in self.doc_biomas.values
