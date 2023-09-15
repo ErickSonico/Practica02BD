@@ -49,3 +49,6 @@ class Veterinarios:
             dicc{}: reglon que devuelve
         """
         return self.doc_veterinario.loc[self.doc_veterinario['rfc'] == llave].to_dict('records')[0]
+    
+    def busca_veterinario(self,llave):
+        return llave in self.doc_veterinario.values

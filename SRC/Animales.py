@@ -54,3 +54,6 @@ class Animales:
             dicc{}: reglon que devuelve
         """
         return self.doc_animales.loc[self.doc_animales['idAnimal'] == llave].to_dict('records')[0]
+    
+    def busca_animal(self,llave):
+        return llave in self.doc_animales.values
