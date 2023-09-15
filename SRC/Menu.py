@@ -83,60 +83,77 @@ class Menu:
         if n == 1: # Agregar
             if self.entidad == self.veterinarios:
                 rfc = input("RFC: ")
-                if type(rfc) != str:
-                    raise ValueError("El valor no es el esperado")
+                if len(rfc) > 13 or rfc == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 nombre = input("Nombre: ")
-                if type(nombre) != str:
-                    raise ValueError("El valor no es el esperado")
+                if nombre == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 apellidoPaterno = input("Apellido Paterno: ")
-                if type(apellidoPaterno) != str:
-                    raise ValueError("El valor no es el esperado")
+                if apellidoPaterno == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 apellidoMaterno = input("Apellido Materno: ")
-                if type(apellidoMaterno) != str:
-                    raise ValueError("El valor no es el esperado")
+                if apellidoMaterno == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 genero = input("Genero: ")
-                if type(genero) != str:
-                    raise ValueError("El valor no es el esperado")
+                if genero == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 nacimiento = input("Anio de nacimiento: ")
-                if type(nacimiento) != str:
-                    raise ValueError("El valor no es el esperado")
+                if nacimiento == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     telefono = int(input("Telefono: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 email = input("Email: ")
-                if type(email) != str:
-                    raise ValueError("El valor no es el esperado")
+                if "@" not in email or ".com" not in email:
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 calle = input("Calle: ")
-                if type(calle) != str:
-                    raise ValueError("El valor no es el esperado")
+                if calle == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
-                    numeroExt = int(input("Numero Exterior: "))
+                    numeroExt = int(input("Número Exterior: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
-                    numeroInt = int(input("Numero Interior: "))
+                    numeroInt = int(input("Número Interior: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 colonia = input("Colonia: ")
-                if type(colonia) != str:
-                    raise ValueError("El valor no es el esperado")
+                if colonia == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 estado = input("Estado: ")
-                if type(estado) != str:
-                    raise ValueError("El valor no es el esperado")
-                especialidad = input("Especiealidad: ")
-                if type(especialidad) != str:
-                    raise ValueError("El valor no es el esperado")
+                if estado == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
+                especialidad = input("Especialidad: ")
+                if especialidad == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     salario = float(input("Salario: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 fechaIni = input("Fecha de Inicio: ")
-                if type(fechaIni) != str:
-                    raise ValueError("El valor no es el esperado")
+                if fechaIni == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 fechaFin = input("Fecha de Fin: ")
-                if type(fechaFin) != str:
-                    raise ValueError("El valor no es el esperado")
+                if fechaFin == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 self.entidad.agrega_veterinario({'rfc': rfc, 'nombre': nombre, 'apellido paterno': apellidoPaterno, 'apellido materno': apellidoMaterno, 
                                                  'genero': genero, 'nacimiento': nacimiento, 'telefono': telefono, 'email': email, 'calle': calle, 
                                                  'numero exterior': numeroExt, 'numero interior': numeroInt, 'colonia': colonia, 'estado': estado, 
@@ -150,34 +167,43 @@ class Menu:
                 try:
                     idAnimal = int(input("ID: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 nombreAnimal = input("Nombre: ")
-                if type(nombreAnimal) != str:
-                    raise ValueError("El valor no es el esperado")
+                if nombreAnimal == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 especie = input("Especie: ")
-                if type(especie) != str:
-                    raise ValueError("El valor no es el esperado")
-                try: 
+                if especie == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
+                try:
                     altura = float(input("Altura: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     peso = float(input("Peso: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 sexo = input("Sexo: ")
-                if type(sexo) != str:
-                    raise ValueError("El valor no es el esperado")
+                if sexo == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 alimentacion = input("Alimentacion: ")
-                if type(alimentacion) != str:
-                    raise ValueError("El valor no es el esperado")
+                if alimentacion == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 instruccionMed = input("Instruccion Medica: ")
-                if type(instruccionMed) != str:
-                    raise ValueError("El valor no es el esperado")
+                if instruccionMed == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     numeroJaula = int(input("Numero de Jaula: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 self.entidad.agrega_animal({'idAnimal': idAnimal, 'nombre': nombreAnimal, 'especie': especie, 'altura': altura, 'peso': peso, 'sexo': sexo,
                                             'alimentacion': alimentacion, 'instruccion medica': instruccionMed, 'numero de jaula': numeroJaula})
                 self.entidad.guarda_datos()
@@ -189,33 +215,40 @@ class Menu:
                 try:
                     idBioma = int(input("ID: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 tipo = input("Tipo: ")
-                if type(tipo) != str:
+                if tipo == '':
                     raise ValueError("EL valor no es el esperado")
                 clima = input("Clima: ")
-                if type(clima) != str:
-                    raise ValueError("El valor no es el esperado")
+                if clima == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     temperatura = float(input("Temperatura: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     cantidadJaulas = int(input("Numero de Jaulas: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     numeroAnimales = int(input("Numero de Animales: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     numeroCuidadores = int(input("Numero de Cuidadores: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     numeroVeterinaios = int(input("Numero de Veterinarios: "))
                 except Exception:
-                    raise ValueError("El valor no es el esperado")
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 self.entidad.agrega_bioma({'idBioma': idBioma, 'tipo': tipo, 'clima': clima, 'temperatura': temperatura, 'numero de jaulas': cantidadJaulas,
                                            'numero de animales': numeroAnimales, 'numero de cuidadores': numeroCuidadores, 'numero de veterinarios': numeroVeterinaios})
                 self.entidad.guarda_datos()
@@ -226,8 +259,9 @@ class Menu:
         elif n == 2: # Consultar
             if self.entidad == self.veterinarios:
                 rfc = input("RFC: ")
-                if type(rfc) != str:
-                    raise ValueError("El valor no es el esperado")
+                if rfc == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 try:
                     print('\n' + str(self.entidad.get_veterinario(rfc)) + '\n')
                 except Exception:
@@ -263,30 +297,49 @@ class Menu:
         elif n == 3: # Editar
             if self.entidad == self.veterinarios:
                 rfc = input("RFC: ")
-                if type(rfc) != str:
-                    raise ValueError("El valor no es el esperado")
+                if rfc == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 columna = input("Atributo: ")
+                if columna == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 valor = input("Valor: ")
-                self.entidad.actualiza_dato(rfc, columna, valor)
-                self.entidad.guarda_datos()
-                self.entidad = None
-                self.operacion = None
+                if valor == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
+                if self.entidad.pertenece_columna(columna):
+                    self.entidad.actualiza_dato(rfc, columna, valor)
+                    self.entidad.guarda_datos()
+                    self.entidad = None
+                    self.operacion = None
+                else:
+                    print("El atributo no existe")
             elif self.entidad == self.animales or self.entidad == self.biomas:
                 try:
                     id = int(input("ID: "))
                 except Exception:
                     raise ValueError("El valor tiene que ser numerico")
                 columna = input("Columna: ")
+                if columna == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
                 valor = input("Valor: ")
-                self.entidad.actualiza_dato(id, columna, valor)
-                self.entidad.guarda_datos()
-                self.entidad = None
-                self.operacion = None
+                if valor == '':
+                    print("El valor no es el esperado")
+                    raise ValueError()
+                if self.entidad.pertenece_columna(columna):
+                    self.entidad.actualiza_dato(id, columna, valor)
+                    self.entidad.guarda_datos()
+                    self.entidad = None
+                    self.operacion = None
+                else:
+                    print("El atributo no existe")
 
         elif n == 4: # Eliminar
             if self.entidad == self.veterinarios:
                 rfc = input("RFC: ")
-                if type(rfc) != str:
+                if rfc == '':
                     raise ValueError("El valor no es esperado")
                 if self.entidad.busca_veterinario(rfc):
                     self.entidad.elimina_veterinario(rfc)

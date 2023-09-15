@@ -60,3 +60,14 @@ class Veterinarios:
             boolean: True si el veterinario está dentro del archivo. False e.o.c.
         """
         return llave in self.doc_veterinario.values
+    
+    def pertenece_columna(self,columna):
+        """Método que checa si el argumento es una columna del dataframe
+
+        Args:
+            columna (str): atributo a checar
+
+        Returns:
+            boolean: True si el argumento es un nombre de columna. False e.o.c.
+        """
+        return columna in self.doc_veterinario.columns.values.tolist()
