@@ -1,4 +1,3 @@
-import os.path
 from Veterinarios import *
 from Animales import *
 from Biomas import *
@@ -9,7 +8,7 @@ class Menu:
 
     
     def __init__(self, veterinarios, animales, biomas):
-        """Método constructor de la clase Menu, recibe tres claes:
+        """Método constructor de la clase Menu, recibe tres clases:
             + Veterinario 
             + Animales  
             + Biomas
@@ -17,8 +16,8 @@ class Menu:
 
         Args:
             veterinarios (Veterinarios): clase que nos ayuda a leer el csv de Veterinarios.
-            animales (Animales): clase que nos ayuda a leer el csv de Veterinarios.
-            biomas (Biomas): clase que nos ayuda a leer el csv de Veterinarios.
+            animales (Animales): clase que nos ayuda a leer el csv de Animales.
+            biomas (Biomas): clase que nos ayuda a leer el csv de Biomas.
         """
         self.veterinarios = veterinarios
         self.animales = animales
@@ -26,23 +25,23 @@ class Menu:
 
 
     def selecciona_entidad(self, n):
-        """Metodo que nos ayuda a seleccionar con que entidad trabajaremos:
+        """Método que nos ayuda a seleccionar con que entidad trabajaremos:
             1 - Veterinarios
             2 - Animales
             3 - Biomas
 
         Args:
-            n (int): numero que nos ayuda a seleccionar que con que entidad trabajaremos
+            n (int): Número que nos ayuda a seleccionar que con que entidad trabajaremos
 
         Raises:
-            ValueError: Si el valor no es el esperado, numeros enteros.
+            ValueError: Si el valor no es el esperado, números enteros.
 
         Returns:
-            bool: bandera para el menu.
+            bool: Bandera para el menu.
         """
         
         if type(n) != int:
-            raise ValueError("Debes de teclear un numero entero")
+            raise ValueError("Debes de teclear un número entero")
         
         if n == 1:
             self.entidad = self.veterinarios
@@ -56,14 +55,14 @@ class Menu:
         return True
 
     def selecciona_operacion(self, n):
-        """Metodo que nos ayuda a seleccionar y realizar una accion:
+        """Método que nos ayuda a seleccionar y realizar una acción:
             1 - Agregar
             2 - Consultar
             3 - Editar
             4 - Eliminar
 
         Args:
-            n (int): numero que nos ayuda a seleccionar que operacion se realizara.
+            n (int): Número que nos ayuda a seleccionar que operación se realizará.
 
         Raises:
             ValueError: Si el valor no es el esperado.
@@ -74,7 +73,7 @@ class Menu:
         """
         
         if type(n) != int:
-            raise ValueError("Debes de teclear un numero entero")
+            raise ValueError("Debes de teclear un número entero")
         
         if self.entidad is None:
             print("No se ha seleccionado una entidad\n")
@@ -107,13 +106,13 @@ class Menu:
                     print("El valor no es el esperado")
                     raise ValueError()
                 try:
-                    telefono = int(input("Telefono: "))
+                    telefono = int(input("Teléfono: "))
                 except Exception:
                     print("El valor no es el esperado")
                     raise ValueError()
                 email = input("Email: ")
-                if "@" not in email or ".com" not in email:
-                    print("El valor no es el esperado")
+                if "@" not in email:
+                    print("El valor no es el esperado. El correo debe llevar @")
                     raise ValueError()
                 calle = input("Calle: ")
                 if calle == '':
@@ -273,7 +272,7 @@ class Menu:
                 try:
                     id = int(input("ID: "))
                 except Exception:
-                    raise ValueError("El valor tiene que ser numerico")
+                    raise ValueError("El valor tiene que ser numérico")
                 try:
                     print('\n' + str(self.entidad.get_animal(id)) + '\n')
                 except Exception:
@@ -285,7 +284,7 @@ class Menu:
                 try:
                     id = int(input("ID: "))
                 except Exception:
-                    raise ValueError("El valor tiene que ser numerico")
+                    raise ValueError("El valor tiene que ser numérico")
                 try:
                     print('\n' + str(self.entidad.get_bioma(id)) + '\n')
                 except Exception:
@@ -297,8 +296,8 @@ class Menu:
         elif n == 3: # Editar
             if self.entidad == self.veterinarios:
                 rfc = input("RFC: ")
-                if rfc == '':
-                    print("El valor no es el esperado")
+                if rfc == '' or not self.entidad.busca_veterinario(rfc):
+                    print("El valor no es el esperado o no existe")
                     raise ValueError()
                 columna = input("Atributo: ")
                 if columna == '':
@@ -319,8 +318,12 @@ class Menu:
                 try:
                     id = int(input("ID: "))
                 except Exception:
-                    raise ValueError("El valor tiene que ser numerico")
-                columna = input("Columna: ")
+                    print("El valor tiene que ser numérico")
+                    raise ValueError()
+                if not self.entidad.busca_instancia(id):
+                    print("ID inexistente")
+                    raise ValueError
+                columna = input("Atributo: ")
                 if columna == '':
                     print("El valor no es el esperado")
                     raise ValueError()
@@ -340,7 +343,8 @@ class Menu:
             if self.entidad == self.veterinarios:
                 rfc = input("RFC: ")
                 if rfc == '':
-                    raise ValueError("El valor no es esperado")
+                    print("El valor no es esperado")
+                    raise ValueError()
                 if self.entidad.busca_veterinario(rfc):
                     self.entidad.elimina_veterinario(rfc)
                     self.entidad.guarda_datos()
@@ -352,8 +356,9 @@ class Menu:
                 try:
                     id = int(input("ID: "))
                 except Exception:
-                    raise ValueError("El valor tiene que ser numerico")
-                if self.entidad.busca_animal(id):
+                    print("El valor tiene que ser numérico")
+                    raise ValueError()
+                if self.entidad.busca_instancia(id):
                     self.entidad.elimina_animal(id)
                     self.entidad.guarda_datos()
                     self.entidad = None
@@ -364,10 +369,14 @@ class Menu:
                 try:
                     id = int(input("ID: "))
                 except Exception:
-                    raise ValueError("El valor tiene que ser numerico")
-                self.entidad.elimina_bioma(id)
-                self.entidad.guarda_datos()
-                self.entidad = None
-                self.operacion = None
+                    print("El valor tiene que ser numérico")
+                    raise ValueError()
+                if self.entidad.busca_instancia(id):
+                    self.entidad.elimina_bioma(id)
+                    self.entidad.guarda_datos()
+                    self.entidad = None
+                    self.operacion = None
+                else:
+                    print("Bioma no encontrado para eliminar")
 
         return True

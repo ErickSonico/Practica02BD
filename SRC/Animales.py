@@ -5,21 +5,21 @@ class Animales:
     """   
 
     def __init__(self, file):
-        """Metodo constructor que recibe archivos csv para su edicion y manejo de animales.
+        """Método constructor que recibe archivos csv para su edición y manejo de animales
 
         Args:
-            file (.csv): archivo que se editara
+            file (.csv): archivo que se editará
         """
         self.doc_animales = pd.DataFrame(pd.read_csv(file))
         self.file = file
 
     def guarda_datos(self):
-        """Metodo que guarda los datos en el csv
+        """Método que guarda los datos en el csv
         """
         self.doc_animales.to_csv(self.file,index=False)
     
     def actualiza_dato(self,llave,columna,valor_nuevo):
-        """Metodo que recibe tres datos para actualizarlos en el csv
+        """Método que recibe tres datos para actualizarlos en el csv
 
         Args:
             llave (int): llave de la entidad
@@ -29,33 +29,33 @@ class Animales:
         self.doc_animales.loc[self.doc_animales['idAnimal'] == llave, columna] = valor_nuevo
 
     def agrega_animal(self,renglon):
-        """Metodo que agrega un nuevo renglon a la csv de la entidad
+        """Método que agrega un nuevo renglón a la csv de la entidad
 
         Args:
-            renglon (dicc{}): el reglon a introducir en el csv
+            renglon (dicc{}): el reglón a introducir en el csv
         """
         self.doc_animales.loc[len(self.doc_animales)] = renglon
 
     def elimina_animal(self,llave):
-        """Método que elimina un reglon del csv de la entidad
+        """Método que elimina un reglón del csv de la entidad
 
         Args:
-            llave (int): reglon a eliminar
+            llave (int): reglón a eliminar
         """
         self.doc_animales = self.doc_animales.drop(self.doc_animales[self.doc_animales['idAnimal'] == llave].index)
 
     def get_animal(self,llave):
-        """Metdo que devueleve un reglon del csv de la entidad
+        """Método que devueleve un reglón del csv de la entidad
 
         Args:
-            llave (int): renglon a devolver
+            llave (int): renglón a devolver
 
         Returns:
-            dicc{}: reglon que devuelve
+            dicc{}: reglón que devuelve
         """
         return self.doc_animales.loc[self.doc_animales['idAnimal'] == llave].to_dict('records')[0]
     
-    def busca_animal(self,llave):
+    def busca_instancia(self,llave):
         """Método que verifica si un animal está en el archivo a partir de su llave
 
         Args:

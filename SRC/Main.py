@@ -38,7 +38,12 @@ while True:
     print('2. Consultar')
     print('3. Editar')
     print('4. Eliminar')
+    print('5. Salir')
     try:
-        menu.selecciona_operacion(int(input('')))
+        operacion = int(input(''))
+        if operacion == 5:
+            break
+        else:
+            menu.selecciona_operacion(operacion)
     except ValueError:
         print('Opción no válida\n')
