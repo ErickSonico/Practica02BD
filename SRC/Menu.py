@@ -4,14 +4,42 @@ from Animales import *
 from Biomas import *
 
 class Menu:
+    """Clase para poder mostrar y realizar opciones
+    """
 
+    
     def __init__(self, veterinarios, animales, biomas):
+        """Método constructor de la clase Menu, recibe tres claes:
+            + Veterinario 
+            + Animales  
+            + Biomas
+        
+
+        Args:
+            veterinarios (Veterinarios): clase que nos ayuda a leer el csv de Veterinarios.
+            animales (Animales): clase que nos ayuda a leer el csv de Veterinarios.
+            biomas (Biomas): clase que nos ayuda a leer el csv de Veterinarios.
+        """
         self.veterinarios = veterinarios
         self.animales = animales
         self.biomas = biomas
 
 
     def selecciona_entidad(self, n):
+        """Metodo que nos ayuda a seleccionar con que entidad trabajaremos:
+            1 - Veterinarios
+            2 - Animales
+            3 - Biomas
+
+        Args:
+            n (int): numero que nos ayuda a seleccionar que con que entidad trabajaremos
+
+        Raises:
+            ValueError: Si el valor no es el esperado, numeros enteros.
+
+        Returns:
+            bool: bandera para el menu.
+        """
         
         if type(n) != int:
             raise ValueError("Debes de teclear un numero entero")
@@ -28,6 +56,23 @@ class Menu:
         return True
 
     def selecciona_operacion(self, n):
+        """Metodo que nos ayuda a seleccionar y realizar una accion:
+            1 - Agregar
+            2 - Consultar
+            3 - Editar
+            4 - Eliminar
+
+        Args:
+            n (int): numero que nos ayuda a seleccionar que operacion se realizara.
+
+        Raises:
+            ValueError: Si el valor no es el esperado.
+            
+
+        Returns:
+            bool: Bandera para el menu.
+        """
+        
         if type(n) != int:
             raise ValueError("Debes de teclear un numero entero")
         
